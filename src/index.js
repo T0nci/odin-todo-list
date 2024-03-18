@@ -4,6 +4,12 @@ import DOM from './assets/js/dom';
 import projectModule from './assets/js/projects';
 
 
+// Interface for initializing the project
+function initializeProject() {
+  DOM.initializeModals();
+  renderProjects();
+}
+
 // Interface for showing all projects
 function renderProjects() {
   const projects = projectModule.getProjects();
@@ -20,11 +26,4 @@ function renderProjects() {
 }
 
 
-projectModule.createProject('HI1!');
-projectModule.createProject('HI2!');
-projectModule.createProject('HI3!');
-projectModule.createProject('HI4!');
-projectModule.createProject('HI5!');
-projectModule.createProject('HI6!');
-projectModule.createProject('HI7!');
-renderProjects();
+initializeProject();
