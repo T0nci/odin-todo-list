@@ -70,9 +70,35 @@ meter {
 
 :root {
   --body-background: #EEEEEE;
+  --aside-background: #DDDDDD;
+  --main-background: #FFFFFF;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--body-background, lightgray);
+  background-color: var(--body-background);
+}
+
+.container {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+aside {
+  padding: 1rem;
+  background-color: var(--aside-background);
+}
+
+main {
+  padding: 1rem;
+  background-color: var(--main-background);
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: bolder;
 }
