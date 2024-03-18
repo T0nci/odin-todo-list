@@ -1,7 +1,22 @@
 import './assets/css/style.css';
-import deleteIcon from './assets/img/delete.svg';
-import editIcon from './assets/img/edit.svg';
-import expandIcon from './assets/img/expand.svg';
-import shrinkIcon from './assets/img/shrink.svg';
-import domModule from './assets/js/dom';
 
+import DOM from './assets/js/dom';
+import projectModule from './assets/js/projects';
+
+
+// Interface for showing all projects
+function renderProjects() {
+  const projects = projectModule.getProjects();
+
+  DOM.showProjects(projects);
+}
+
+
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+projectModule.createProject('HI!');
+renderProjects();
