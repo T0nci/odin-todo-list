@@ -16,11 +16,16 @@ function createProject(title) {
 }
 
 
+function deleteProject(index) {
+  projects.splice(index, 1);
+}
+
+
 const projectModule = {
   getProjects,
   createProject,
+  deleteProject,
 };
-
 
 const projects = [];
 projects.push(new Project('Default'));

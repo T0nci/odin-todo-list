@@ -1,6 +1,8 @@
 function showProjects(projects) {
   const projectsDiv = document.querySelector('.projects');
-  projects.forEach(project => {
+  projectsDiv.innerHTML = '';
+  
+  projects.forEach((project, index) => {
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('project');
 
@@ -10,10 +12,10 @@ function showProjects(projects) {
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('icon-button');
+    deleteButton.dataset.index = index;
 
     projectDiv.appendChild(projectButton);
     projectDiv.appendChild(deleteButton);
-
     projectsDiv.appendChild(projectDiv);
   });
 }
