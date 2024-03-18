@@ -5,33 +5,33 @@ function initializeModals() {
 
 
 function enableModals() {
-  const dialogs = document.querySelectorAll('dialog');
+  const dialogsForCreating = document.querySelectorAll('dialog.create');
 
   // Enable showing modals
-  const showModalButtons = document.querySelectorAll('.headline > .icon-button');
+  const showModalButtons = document.querySelectorAll('.headline > .icon-button.add');
 
   showModalButtons[0].addEventListener('click', () => {
-    dialogs[0].showModal();
+    dialogsForCreating[0].showModal();
   });
   showModalButtons[1].addEventListener('click', () => {
-    dialogs[1].showModal();
+    dialogsForCreating[1].showModal();
   });
 
   // Enable closing modals
-  const closeModalButtons = document.querySelectorAll('.utility > .icon-button');
+  const closeModalButtons = document.querySelectorAll('.utility > .icon-button.close');
 
   closeModalButtons[0].addEventListener('click', () => {
-    dialogs[0].close();
+    dialogsForCreating[0].close();
   });
   closeModalButtons[1].addEventListener('click', () => {
-    dialogs[1].close();
+    dialogsForCreating[1].close();
   });
 }
 
 
 function showProjects(projects) {
   const projectsDiv = document.querySelector('.projects');
-  projectsDiv.innerHTML = '';
+  projectsDiv.textContent = ''; // ensure div is empty every rendering
 
   projects.forEach((project, index) => {
     const projectDiv = document.createElement('div');
@@ -43,7 +43,7 @@ function showProjects(projects) {
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('icon-button');
-    deleteButton.dataset.index = index;
+    deleteButton.dataset.index = index; // info for deletion
 
     projectDiv.appendChild(projectButton);
     projectDiv.appendChild(deleteButton);

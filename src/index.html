@@ -9,16 +9,16 @@
       <aside>
         <div class="headline">
           Projects
-          <button type="button" class="icon-button"></button>
+          <button type="button" class="icon-button add"></button>
         </div>
         <div class="projects">
 
         </div>
-        <dialog>
+        <dialog class="create">
           <form action="">
             <div class="utility">
               Add Project
-              <button type="button" class="icon-button"></button>
+              <button type="button" class="icon-button close"></button>
             </div>
             <div>
               <label for="get-project">Title:</label>
@@ -33,16 +33,16 @@
       <main>
         <div class="headline">
           Todo-s
-          <button type="button" class="icon-button"></button>
+          <button type="button" class="icon-button add"></button>
         </div>
         <div class="todos">
 
         </div>
-        <dialog>
+        <dialog class="create">
           <form action="">
             <div class="utility">
               Add Todo
-              <button type="button" class="icon-button"></button>
+              <button type="button" class="icon-button close"></button>
             </div>
             <div>
               <label for="get-project">Title:</label>
@@ -70,7 +70,7 @@
             </div>
             <div>
               <label for="get-checklist">Checklist(item1, item2, ...):</label>
-              <input type="text" name="get-checklist" id="get-checklist" required>
+              <input type="text" name="get-checklist" id="get-checklist" autocomplete="off" required>
             </div>
             <div>
               <button type="submit">Create</button>
