@@ -7,16 +7,76 @@
   <body>
     <div class="container">
       <aside>
-        <div class="headline">Projects</div>
+        <div class="headline">
+          Projects
+          <button type="button" class="icon-button add"></button>
+        </div>
         <div class="projects">
 
         </div>
+        <dialog class="create">
+          <form action="">
+            <div class="utility">
+              Add Project
+              <button type="button" class="icon-button close"></button>
+            </div>
+            <div>
+              <label for="get-project">Title:</label>
+              <input type="text" id="get-project" name="get-project" autocomplete="off" required>
+            </div>
+            <div>
+              <button type="submit">Create</button>
+            </div>
+          </form>
+        </dialog>
       </aside>
       <main>
-        <div class="headline">Todos</div>
-        <div class="todos">
-          
+        <div class="headline">
+          Todo-s
+          <button type="button" class="icon-button add"></button>
         </div>
+        <div class="todos">
+
+        </div>
+        <dialog class="create">
+          <form action="">
+            <div class="utility">
+              Add Todo
+              <button type="button" class="icon-button close"></button>
+            </div>
+            <div>
+              <label for="get-project">Title:</label>
+              <input type="text" name="get-project" id="get-project" autocomplete="off" required>
+            </div>
+            <div>
+              <label for="get-description">Description</label>
+              <textarea name="get-description" id="get-description" required></textarea>
+            </div>
+            <div>
+              <label for="get-date">Due Date:</label>
+              <input type="date" name="get-date" id="get-date" required>
+            </div>
+            <div>
+              <label for="get-priority">Priority:</label>
+              <select name="get-priority" id="get-priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div>
+              <label for="get-notes">Notes:</label>
+              <textarea name="get-notes" id="get-notes" required></textarea>
+            </div>
+            <div>
+              <label for="get-checklist">Checklist(item1, item2, ...):</label>
+              <input type="text" name="get-checklist" id="get-checklist" autocomplete="off" required>
+            </div>
+            <div>
+              <button type="submit">Create</button>
+            </div>
+          </form>
+        </dialog>
       </main>
     </div>
   </body>
