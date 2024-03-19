@@ -33,14 +33,14 @@ function showProjects(projects) {
   projects.forEach((project, index) => {
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('project');
+    projectDiv.dataset.index = index; // info for deletion
 
     const projectButton = document.createElement('button');
     projectButton.classList.add('project-button');
-    projectButton.textContent = project.title;
+    projectButton.textContent = project;
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('icon-button');
-    deleteButton.dataset.index = index; // info for deletion
 
     projectDiv.appendChild(projectButton);
     projectDiv.appendChild(deleteButton);
@@ -49,9 +49,66 @@ function showProjects(projects) {
 }
 
 
+function showTodos(todos) {
+  const todosDiv = document.querySelector('.todos');
+  todosDiv.textContent = '';
+
+  if (typeof todos === 'string') {
+    todosDiv.textContent = todos;
+    return;
+  }
+
+  todos.forEach(todo => {
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add('todo');
+    switch (todo.priority) {
+      case 'high':
+        todoDiv.style.backgroundColor = '#FFB6C1';
+        break;
+      case 'medium':
+        todoDiv.style.backgroundColor = '#FFFFE0';
+        break;
+      case 'low':
+        todoDiv.style.backgroundColor = '#90EE90';
+        break;
+      default:
+        todoDiv.style.backgroundColor = '#90EE90';
+    }
+
+    const todoTitle = document.createElement('div');
+    todoTitle.classList.add('todo-title');
+    todoTitle.textContent = todo.title;
+
+    const todoDueDate = document.createElement('div');
+    todoDueDate.classList.add('todo-due-date');
+    todoDueDate.textContent = `Due Date: ${todo.dueDate}`;
+
+    const iconsDiv = document.createElement('div');
+    iconsDiv.classList.add('todo-icons');
+
+    const expandIcon = document.createElement('button');
+    expandIcon.classList.add('icon-button');
+    expandIcon.classList.add('expand');
+    iconsDiv.appendChild(expandIcon);
+
+    const deleteIcon = document.createElement('button');
+    deleteIcon.classList.add('icon-button');
+    deleteIcon.classList.add('delete');
+    iconsDiv.appendChild(deleteIcon);
+
+    todoDiv.appendChild(todoTitle);
+    todoDiv.appendChild(todoDueDate);
+    todoDiv.appendChild(iconsDiv);
+
+    todosDiv.appendChild(todoDiv);
+  });
+}
+
+
 const DOM = {
   enableModals,
   showProjects,
+  showTodos,
 };
 
 export default DOM;

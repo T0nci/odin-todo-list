@@ -1,18 +1,10 @@
-class Project {
-  constructor(title) {
-    this.title = title;
-    this.todos = [];
-  }
-}
-
-
 function getProjects() {
   return projects.slice();
 }
 
 
 function createProject(title) {
-  projects.push(new Project(title));
+  projects.push(title);
 }
 
 
