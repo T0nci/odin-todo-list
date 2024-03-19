@@ -30,7 +30,7 @@ function listenForSubmit() {
     document.querySelector('#add-project').close();
 
     projectModule.createProject(projectTitle);
-    renderProjects();
+    renderProjects(); // Reshow all projects
   });
 
   // Listen for todo submit
@@ -48,7 +48,7 @@ function renderProjects() {
     btn.addEventListener('click', event => {
       const index = event.currentTarget.dataset.index;
       projectModule.deleteProject(index);
-      renderProjects();
+      renderProjects(); // Reshow all projects
     });
   });
 }
