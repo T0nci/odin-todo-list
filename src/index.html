@@ -9,20 +9,20 @@
       <aside>
         <div class="headline">
           Projects
-          <button type="button" class="icon-button add"></button>
+          <button type="button" class="icon-button" id="show-add-project"></button>
         </div>
         <div class="projects">
 
         </div>
-        <dialog class="create">
+        <dialog class="create" id="add-project">
           <form action="">
             <div class="utility">
               Add Project
-              <button type="button" class="icon-button close"></button>
+              <button type="button" class="icon-button" id="close-add-project"></button>
             </div>
             <div>
-              <label for="get-project">Title:</label>
-              <input type="text" id="get-project" name="get-project" autocomplete="off" required>
+              <label for="get-project-title">Title:</label>
+              <input type="text" id="get-project-title" name="get-project-title" autocomplete="off" required>
             </div>
             <div>
               <button type="submit">Create</button>
@@ -33,20 +33,20 @@
       <main>
         <div class="headline">
           Todo-s
-          <button type="button" class="icon-button add"></button>
+          <button type="button" class="icon-button" id="show-add-todo"></button>
         </div>
         <div class="todos">
 
         </div>
-        <dialog class="create">
+        <dialog class="create" id="add-todo">
           <form action="">
             <div class="utility">
               Add Todo
-              <button type="button" class="icon-button close"></button>
+              <button type="button" class="icon-button" id="close-add-todo"></button>
             </div>
             <div>
-              <label for="get-project">Title:</label>
-              <input type="text" name="get-project" id="get-project" autocomplete="off" required>
+              <label for="get-todo-title">Title:</label>
+              <input type="text" name="get-todo-title" id="get-todo-title" autocomplete="off" required>
             </div>
             <div>
               <label for="get-description">Description</label>

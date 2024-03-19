@@ -28,6 +28,6 @@ const projectModule = {
 };
 
 const projects = [];
-projects.push(new Project('Default'));
+createProject('Default');
 
 export default projectModule;

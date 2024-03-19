@@ -6,11 +6,39 @@ import projectModule from './assets/js/projects';
 
 // Interface for initializing the project
 function initializeProject() {
-  DOM.initializeModals();
+  DOM.enableModals();
+  listenForSubmit();
   renderProjects();
 }
 
-// Interface for showing all projects
+
+// Interface for adding projects and todos
+function listenForSubmit() {
+  // Listen for project submit
+  const submitProjectDialog = document.querySelector(
+    '#add-project button[type="submit"]'
+  );
+
+  submitProjectDialog.addEventListener('click', event => {
+    event.preventDefault();
+
+    const projectTitle = document.querySelector(
+      '#add-project #get-project-title'
+    ).value;
+
+    document.querySelector('#add-project > form').reset();
+    document.querySelector('#add-project').close();
+
+    projectModule.createProject(projectTitle);
+    renderProjects();
+  });
+
+  // Listen for todo submit
+  // ...
+}
+
+
+// Interface for showing all projects + listening for delete
 function renderProjects() {
   const projects = projectModule.getProjects();
 

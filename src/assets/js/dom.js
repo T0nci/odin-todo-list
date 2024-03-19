@@ -1,30 +1,27 @@
-function initializeModals() {
-  enableModals();
-  // listenForSubmit();
-}
-
-
 function enableModals() {
-  const dialogsForCreating = document.querySelectorAll('dialog.create');
+  const projectDialog = document.querySelector('#add-project');
+  const todoDialog = document.querySelector('#add-todo');
 
   // Enable showing modals
-  const showModalButtons = document.querySelectorAll('.headline > .icon-button.add');
+  const showProjectDialog = document.querySelector('#show-add-project');
+  const showTodoDialog = document.querySelector('#show-add-todo');
 
-  showModalButtons[0].addEventListener('click', () => {
-    dialogsForCreating[0].showModal();
+  showProjectDialog.addEventListener('click', () => {
+    projectDialog.showModal();
   });
-  showModalButtons[1].addEventListener('click', () => {
-    dialogsForCreating[1].showModal();
+  showTodoDialog.addEventListener('click', () => {
+    todoDialog.showModal();
   });
 
   // Enable closing modals
-  const closeModalButtons = document.querySelectorAll('.utility > .icon-button.close');
+  const closeProjectDialog = document.querySelector('#close-add-project');
+  const closeTodoDialog = document.querySelector('#close-add-todo');
 
-  closeModalButtons[0].addEventListener('click', () => {
-    dialogsForCreating[0].close();
+  closeProjectDialog.addEventListener('click', () => {
+    projectDialog.close();
   });
-  closeModalButtons[1].addEventListener('click', () => {
-    dialogsForCreating[1].close();
+  closeTodoDialog.addEventListener('click', () => {
+    todoDialog.close();
   });
 }
 
@@ -53,7 +50,7 @@ function showProjects(projects) {
 
 
 const DOM = {
-  initializeModals,
+  enableModals,
   showProjects,
 };
 
