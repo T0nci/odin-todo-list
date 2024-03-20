@@ -64,12 +64,15 @@ function showTodos(todos) {
     switch (todo.priority) {
       case 'high':
         todoDiv.style.backgroundColor = '#FFB6C1';
+        todoDiv.style.border = '5px solid red';
         break;
       case 'medium':
         todoDiv.style.backgroundColor = '#FFFFE0';
+        todoDiv.style.border = '5px solid yellow';
         break;
       case 'low':
         todoDiv.style.backgroundColor = '#90EE90';
+        todoDiv.style.border = '5px solid green';
         break;
       default:
         todoDiv.style.backgroundColor = '#90EE90';

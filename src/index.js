@@ -37,7 +37,42 @@ function listenForDialogSubmit() {
   });
 
   // Listen for todo submit
-  // ...
+  const submitTodoDialog = document.querySelector(
+    '#add-todo button[type="submit"]'
+  );
+  
+  submitTodoDialog.addEventListener('click', event => {
+    event.preventDefault();
+  
+    const project = document.querySelector('.active').textContent;
+    if (!project) {
+      document.querySelector('#add-todo').close();
+      DOM.showTodos('You need to select a project!');
+      return;
+    }
+  
+    const todoTitle = document.querySelector('#get-todo-title').value;
+    const todoDesc = document.querySelector('#get-todo-desc').value;
+    const todoDate = document.querySelector('#get-todo-date').value;
+    const todoPriority = document.querySelector('#get-todo-priority').value;
+    const todoNotes = document.querySelector('#get-todo-notes').value;
+    const todoChecklist = document.querySelector('#get-todo-checklist').value;
+  
+    document.querySelector('#add-todo > form').reset();
+    document.querySelector('#add-todo').close();
+  
+    todoModule.createTodo(
+      project,
+      todoTitle,
+      todoDesc,
+      todoDate,
+      todoPriority,
+      todoNotes,
+      todoChecklist,
+    );
+  
+    renderTodos(project);
+  });
 }
 
 

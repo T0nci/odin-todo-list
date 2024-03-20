@@ -17,15 +17,17 @@ function getAllTodos() { // For testing purposes
 
 
 function getTodosFromProject(project) {
-  const todosFromProject = [];
-  // Slice so we don't modify the actual todos, include todoIndex alongside
-  // project for info about deletion, expansion and modification
-  todos.slice().forEach((todo, todoIndex) => {
+  // structuredClone() so we don't modify the actual todos, include todoIndex 
+  // alongside project for info about deletion, expansion and modification
+  const todosFromProject = []
+  todos.forEach((todo, todoIndex) => {
     if (todo.project === project) {
-      todo.todoIndex = todoIndex;
-      todosFromProject.push(todo);
+      const newTodo = structuredClone(todo);
+      newTodo.todoIndex = todoIndex;
+      todosFromProject.push(newTodo);
     }
   });
+  console.log(todosFromProject);
   return todosFromProject;
 };
 
