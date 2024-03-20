@@ -237,6 +237,10 @@ dialog.create button[type='submit']:active {
 	flex-grow: 1;
 }
 
+.project-button.active {
+	text-decoration: underline;
+}
+
 .project-button:hover {
 	background-color: var(--button-hover);
 }

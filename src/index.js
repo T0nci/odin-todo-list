@@ -23,9 +23,7 @@ function listenForDialogSubmit() {
   submitProjectDialog.addEventListener('click', event => {
     event.preventDefault();
 
-    const projectTitle = document.querySelector(
-      '#add-project #get-project-title'
-    ).value;
+    const projectTitle = document.querySelector('#get-project-title').value;
 
     document.querySelector('#add-project > form').reset();
     document.querySelector('#add-project').close();
@@ -42,7 +40,7 @@ function listenForDialogSubmit() {
 // Interface for rendering the page for the first time
 function renderPage() {
   renderProjects();
-  renderTodos();
+  // renderTodos();
 }
 
 
@@ -50,17 +48,35 @@ function renderPage() {
 function renderProjects() {
   const projects = projectModule.getProjects();
   DOM.showProjects(projects);
+  console.log({projects: projectModule.getProjects(), todos: todoModule.getAllTodos()});
 
   document.querySelectorAll('.project > .icon-button').forEach(btn => {
     btn.addEventListener('click', event => {
       const index = parseInt(event.currentTarget.parentNode.dataset.index);
+
+      if (btn.classList.contains('active')) {
+        // If the project being deleted is active, empty the container
+        document.querySelector('.todos').textContent = '';
+      }
+
       projectModule.deleteProject(index);
+      // Delete all the todos in that project
+      todoModule.getTodosFromProject(index).forEach(todo => {
+        todoModule.deleteTodo(todo.todoIndex);
+      });
+
       renderProjects(); // Reshow all projects
     });
   });
 
   document.querySelectorAll('.project > .project-button').forEach(btn => {
     btn.addEventListener('click', event => {
+      // Place the active class on the correct project
+      const activeProject = document.querySelector('active');
+      if (activeProject) activeProject.classList.remove('active');
+
+      btn.classList.add('active');
+
       const index = parseInt(event.currentTarget.parentNode.dataset.index);
       renderTodos(index);
     });
@@ -85,7 +101,7 @@ function renderTodos(index) {
   document.querySelectorAll('.delete').forEach(btn => {
     btn.addEventListener('click', event => {
       const todoIndex = parseInt(
-        event.currentTarget.parentNode.dataset.todoIndex
+        document.querySelector('.active').parentNode.dataset.index
       );
       const projectIndex = parseInt(
         event.currentTarget.parentNode.dataset.projectIndex

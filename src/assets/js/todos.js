@@ -11,6 +11,11 @@ class Todo {
 }
 
 
+function getAllTodos() { // For testing purposes
+  return todos.slice();
+}
+
+
 function getTodosFromProject(index) {
   const todosFromProject = [];
   // Slice so we don't modify the actual todos, include todoIndex alongside
@@ -36,6 +41,7 @@ function deleteTodo(index) {
 
 
 const todoModule = {
+  getAllTodos,
   getTodosFromProject,
   createTodo,
   deleteTodo,
