@@ -68,6 +68,7 @@ function renderProjects() {
 }
 
 
+// Interface for showing all todos and listening for clicks
 function renderTodos(index) {
   if (!projectModule.getProjects()) {
     DOM.showTodos('ERROR - NO TODOS');
@@ -81,6 +82,19 @@ function renderTodos(index) {
   }
 
   // document.querySelectorAll('todo').forEach(); // expand and delete
+  document.querySelectorAll('.delete').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const todoIndex = parseInt(
+        event.currentTarget.parentNode.dataset.todoIndex
+      );
+      const projectIndex = parseInt(
+        event.currentTarget.parentNode.dataset.projectIndex
+      );
+
+      todoModule.deleteTodo(todoIndex);
+      renderTodos(projectIndex);
+    });
+  })
 }
 
 

@@ -85,6 +85,8 @@ function showTodos(todos) {
 
     const iconsDiv = document.createElement('div');
     iconsDiv.classList.add('todo-icons');
+    iconsDiv.dataset.projectIndex = todo.project; // Info for delete, expand
+    iconsDiv.dataset.todoIndex = todo.todoIndex; // Info for delete, expand
 
     const expandIcon = document.createElement('button');
     expandIcon.classList.add('icon-button');

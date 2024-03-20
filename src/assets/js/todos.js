@@ -12,7 +12,16 @@ class Todo {
 
 
 function getTodosFromProject(index) {
-  return todos.filter(todo => todo.project === index);
+  const todosFromProject = [];
+  // Slice so we don't modify the actual todos, include todoIndex alongside
+  // project for info about deletion, expansion and modification
+  todos.slice().forEach((todo, todoIndex) => {
+    if (todo.project === index) {
+      todo.todoIndex = todoIndex;
+      todosFromProject.push(todo);
+    }
+  });
+  return todosFromProject;
 };
 
 
@@ -21,9 +30,15 @@ function createTodo(project, title, desc, dueDate, priority, notes, checklist) {
 }
 
 
+function deleteTodo(index) {
+  todos.splice(index, 1);
+}
+
+
 const todoModule = {
   getTodosFromProject,
   createTodo,
+  deleteTodo,
 };
 
 const todos = [];
