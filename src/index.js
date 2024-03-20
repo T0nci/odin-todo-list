@@ -127,7 +127,17 @@ function renderTodos(project) {
 
   DOM.showTodos(todoModule.getTodosFromProject(project));
 
-  // document.querySelectorAll('todo').forEach(); // expand and delete
+  // document.querySelectorAll('todo').forEach(); // expand and delete, complete
+  document.querySelectorAll('.checkbox').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const todoIndex = parseInt(
+        event.currentTarget.parentNode.parentNode.dataset.todoIndex
+      ); // double parentNode to select iconsDiv instead of completeDiv
+
+      todoModule.changeCompletionStatus(todoIndex);
+    });
+  });
+
   document.querySelectorAll('.delete').forEach(btn => {
     btn.addEventListener('click', event => {
       const project = document.querySelector('.active').textContent;

@@ -88,7 +88,17 @@ function showTodos(todos) {
 
     const iconsDiv = document.createElement('div');
     iconsDiv.classList.add('todo-icons');
-    iconsDiv.dataset.todoIndex = todo.todoIndex; // Info for delete, expand
+    iconsDiv.dataset.todoIndex = todo.todoIndex; // Info for delete, expand, modify, complete
+
+    const completeButton = document.createElement('input');
+    completeButton.setAttribute('type', 'checkbox');
+    completeButton.classList.add('checkbox');
+    if (todo.complete) completeButton.checked = true;
+    const completeDiv = document.createElement('div');
+    completeDiv.classList.add('complete');
+    completeDiv.textContent = 'Complete:';
+    completeDiv.appendChild(completeButton);
+    iconsDiv.appendChild(completeDiv);
 
     const expandIcon = document.createElement('button');
     expandIcon.classList.add('icon-button');

@@ -7,6 +7,7 @@ class Todo {
     this.priority = priority;
     this.notes = notes;
     this.checklist = checklist;
+    this.complete = false;
   }
 }
 
@@ -44,11 +45,21 @@ function deleteTodo(index) {
 }
 
 
+function changeCompletionStatus(index) {
+  if (todos[index].complete === false) {
+    todos[index].complete = true;
+  } else {
+    todos[index].complete = false;
+  }
+}
+
+
 const todoModule = {
   getAllTodos,
   getTodosFromProject,
   createTodo,
   deleteTodo,
+  changeCompletionStatus,
 };
 
 const todos = [];
