@@ -238,6 +238,7 @@ dialog.create button[type='submit']:active {
 }
 
 .project-button.active {
+	font-weight: bold;
 	text-decoration: underline;
 }
 

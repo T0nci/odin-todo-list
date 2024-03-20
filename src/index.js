@@ -72,7 +72,7 @@ function renderProjects() {
   document.querySelectorAll('.project > .project-button').forEach(btn => {
     btn.addEventListener('click', event => {
       // Place the active class on the correct project
-      const activeProject = document.querySelector('active');
+      const activeProject = document.querySelector('.active');
       if (activeProject) activeProject.classList.remove('active');
 
       btn.classList.add('active');
