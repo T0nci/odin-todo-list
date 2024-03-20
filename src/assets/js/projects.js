@@ -4,12 +4,14 @@ function getProjects() {
 
 
 function createProject(title) {
+  if (projects.includes(title)) return false;
   projects.push(title);
+  return true;
 }
 
 
-function deleteProject(index) {
-  projects.splice(index, 1);
+function deleteProject(title) {
+  projects.splice(projects.indexOf(title), 1);
 }
 
 

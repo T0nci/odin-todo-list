@@ -30,10 +30,10 @@ function showProjects(projects) {
   const projectsDiv = document.querySelector('.projects');
   projectsDiv.textContent = ''; // ensure div is empty every rendering
 
-  projects.forEach((project, index) => {
+  projects.forEach((project) => {
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('project');
-    projectDiv.dataset.index = index; // info for deletion
+    projectDiv.dataset.project = project; // info for deletion
 
     const projectButton = document.createElement('button');
     projectButton.classList.add('project-button');

@@ -9,7 +9,7 @@ import todoModule from './assets/js/todos';
 function initializeProject() {
   DOM.enableModals();
   listenForDialogSubmit();
-  renderPage();
+  renderProjects();
 }
 
 
@@ -25,10 +25,14 @@ function listenForDialogSubmit() {
 
     const projectTitle = document.querySelector('#get-project-title').value;
 
-    document.querySelector('#add-project > form').reset();
-    document.querySelector('#add-project').close();
+    if (!projectModule.createProject(projectTitle)) {
+      alert('Name already exists!');
+      return;
+    }
 
-    projectModule.createProject(projectTitle);
+    document.querySelector('#add-project').close();
+    document.querySelector('#add-project > form').reset();
+
     renderProjects(); // Reshow all projects
   });
 
@@ -37,31 +41,27 @@ function listenForDialogSubmit() {
 }
 
 
-// Interface for rendering the page for the first time
-function renderPage() {
-  renderProjects();
-  // renderTodos();
-}
-
-
 // Interface for showing all projects and listening for clicks
 function renderProjects() {
+  console.table(projectModule.getProjects());
+  console.table(todoModule.getAllTodos());
   const projects = projectModule.getProjects();
   DOM.showProjects(projects);
-  console.log({projects: projectModule.getProjects(), todos: todoModule.getAllTodos()});
 
   document.querySelectorAll('.project > .icon-button').forEach(btn => {
     btn.addEventListener('click', event => {
-      const index = parseInt(event.currentTarget.parentNode.dataset.index);
+      const project = event.currentTarget.parentNode.dataset.project;
+      const activeProject = document.querySelector('.active');
 
-      if (btn.classList.contains('active')) {
+      if (project === activeProject.textContent) {
         // If the project being deleted is active, empty the container
+        activeProject.textContent = '';
         document.querySelector('.todos').textContent = '';
       }
 
-      projectModule.deleteProject(index);
+      projectModule.deleteProject(project);
       // Delete all the todos in that project
-      todoModule.getTodosFromProject(index).forEach(todo => {
+      todoModule.getTodosFromProject(project).forEach(todo => {
         todoModule.deleteTodo(todo.todoIndex);
       });
 
@@ -71,46 +71,39 @@ function renderProjects() {
 
   document.querySelectorAll('.project > .project-button').forEach(btn => {
     btn.addEventListener('click', event => {
-      // Place the active class on the correct project
       const activeProject = document.querySelector('.active');
-      if (activeProject) activeProject.classList.remove('active');
+      const selectedProject = event.currentTarget.parentNode.dataset.project;
 
-      btn.classList.add('active');
-
-      const index = parseInt(event.currentTarget.parentNode.dataset.index);
-      renderTodos(index);
+      activeProject.textContent = selectedProject;
+      renderTodos(selectedProject);
     });
   });
 }
 
 
 // Interface for showing all todos and listening for clicks
-function renderTodos(index) {
+function renderTodos(project) {  
+  console.table(projectModule.getProjects());
+  console.table(todoModule.getAllTodos());
   if (!projectModule.getProjects()) {
     DOM.showTodos('ERROR - NO TODOS');
     return;
   }
 
-  if (!index) {
-    DOM.showTodos(todoModule.getTodosFromProject(0));
-  } else {
-    DOM.showTodos(todoModule.getTodosFromProject(index));
-  }
+  DOM.showTodos(todoModule.getTodosFromProject(project));
 
   // document.querySelectorAll('todo').forEach(); // expand and delete
   document.querySelectorAll('.delete').forEach(btn => {
     btn.addEventListener('click', event => {
+      const project = document.querySelector('.active').textContent;
       const todoIndex = parseInt(
-        document.querySelector('.active').parentNode.dataset.index
-      );
-      const projectIndex = parseInt(
-        event.currentTarget.parentNode.dataset.projectIndex
+        event.currentTarget.parentNode.dataset.todoIndex
       );
 
       todoModule.deleteTodo(todoIndex);
-      renderTodos(projectIndex);
+      renderTodos(project);
     });
-  })
+  });
 }
 
 

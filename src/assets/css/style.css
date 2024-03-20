@@ -105,7 +105,7 @@ main {
 .headline {
   font-size: 2rem;
   font-weight: bolder;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	display: flex;
 	gap: 0.25rem;
@@ -237,11 +237,6 @@ dialog.create button[type='submit']:active {
 	flex-grow: 1;
 }
 
-.project-button.active {
-	font-weight: bold;
-	text-decoration: underline;
-}
-
 .project-button:hover {
 	background-color: var(--button-hover);
 }
@@ -278,4 +273,9 @@ dialog.create button[type='submit']:active {
 
 .delete {
 	background: url('../img/delete.svg') center/25px auto no-repeat;
+}
+
+.active {
+	font-size: 1.75rem;
+	margin-bottom: 1rem;
 }

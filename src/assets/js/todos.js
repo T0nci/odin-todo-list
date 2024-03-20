@@ -16,12 +16,12 @@ function getAllTodos() { // For testing purposes
 }
 
 
-function getTodosFromProject(index) {
+function getTodosFromProject(project) {
   const todosFromProject = [];
   // Slice so we don't modify the actual todos, include todoIndex alongside
   // project for info about deletion, expansion and modification
   todos.slice().forEach((todo, todoIndex) => {
-    if (todo.project === index) {
+    if (todo.project === project) {
       todo.todoIndex = todoIndex;
       todosFromProject.push(todo);
     }
@@ -31,7 +31,9 @@ function getTodosFromProject(index) {
 
 
 function createTodo(project, title, desc, dueDate, priority, notes, checklist) {
-  todos.push(new Todo(project, title, desc, dueDate, priority, notes, checklist));
+  todos.push(
+    new Todo(project, title, desc, dueDate, priority, notes, checklist)
+  );
 }
 
 
@@ -48,6 +50,6 @@ const todoModule = {
 };
 
 const todos = [];
-createTodo(0, 'Default Todo', '/', '2069-12-31', 'low', '/', '/');
+createTodo('Default', 'Default Todo', '/', '2069-12-31', 'low', '/', '/');
 
 export default todoModule;
