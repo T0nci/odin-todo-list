@@ -56,7 +56,6 @@ function listenForDialogSubmit() {
     const todoDate = document.querySelector('#get-todo-date').value;
     const todoPriority = document.querySelector('#get-todo-priority').value;
     const todoNotes = document.querySelector('#get-todo-notes').value;
-    const todoChecklist = document.querySelector('#get-todo-checklist').value;
   
     document.querySelector('#add-todo > form').reset();
     document.querySelector('#add-todo').close();
@@ -68,7 +67,6 @@ function listenForDialogSubmit() {
       todoDate,
       todoPriority,
       todoNotes,
-      todoChecklist,
     );
   
     renderTodos(project);

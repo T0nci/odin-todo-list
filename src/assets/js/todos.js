@@ -1,12 +1,11 @@
 class Todo {
-  constructor(project, title, desc, dueDate, priority, notes, checklist) {
+  constructor(project, title, desc, dueDate, priority, notes) {
     this.project = project;
     this.title = title;
     this.description = desc;
     this.dueDate = dueDate;
     this.priority = priority;
     this.notes = notes;
-    this.checklist = checklist;
     this.complete = false;
   }
 }
@@ -33,9 +32,9 @@ function getTodosFromProject(project) {
 };
 
 
-function createTodo(project, title, desc, dueDate, priority, notes, checklist) {
+function createTodo(project, title, desc, dueDate, priority, notes) {
   todos.push(
-    new Todo(project, title, desc, dueDate, priority, notes, checklist)
+    new Todo(project, title, desc, dueDate, priority, notes)
   );
 }
 

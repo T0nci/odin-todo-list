@@ -135,8 +135,6 @@ function expandTodo(iconsDiv, todoInfo) {
   notes.classList.add('todo-notes');
   notes.innerHTML = `Notes:<br>${todoInfo.notes}`;
 
-  const checklist = document.createElement('div'); // need to change the checklist into an object probably to track which item is completed
-
   todoDiv.insertBefore(priority, iconsDiv);
   todoDiv.insertBefore(desc, iconsDiv);
   todoDiv.insertBefore(notes, iconsDiv);
