@@ -150,13 +150,27 @@ function renderTodos(project) {
     });
   });
 
-  document.querySelectorAll('.expand').forEach(btn => {
-    btn.addEventListener('click', event => {
-      const todoIndex = event.currentTarget.parentNode.dataset.todoIndex;
-      const todoInfo = todoModule.getTodo(todoIndex);
 
-      DOM.expandTodo(todoIndex, todoInfo);
+  const enableExpansion = function(event) {
+    const iconsDiv = event.currentTarget.parentNode;
+
+    const todoIndex = iconsDiv.dataset.todoIndex;
+    const todoInfo = todoModule.getTodo(todoIndex);
+
+    DOM.expandTodo(iconsDiv, todoInfo);
+
+    iconsDiv.querySelector('.shrink').addEventListener('click', event => {
+      const todo = event.currentTarget.parentNode.parentNode;
+
+      DOM.shrinkTodo(todo);
+
+      todo.querySelector('.expand').addEventListener('click', enableExpansion);
     });
+  }
+
+
+  document.querySelectorAll('.expand').forEach(btn => {
+    btn.addEventListener('click', enableExpansion);
   });
 }
 

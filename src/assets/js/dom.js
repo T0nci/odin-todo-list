@@ -119,9 +119,8 @@ function showTodos(todos) {
 }
 
 
-function expandTodo(todoIndex, todoInfo) {
+function expandTodo(iconsDiv, todoInfo) {
   // Expand the todo
-  const iconsDiv = document.querySelector(`[data-todo-index='${todoIndex}']`);
   const todoDiv = iconsDiv.parentNode;
 
   const priority = document.createElement('div');
@@ -142,18 +141,38 @@ function expandTodo(todoIndex, todoInfo) {
   todoDiv.insertBefore(desc, iconsDiv);
   todoDiv.insertBefore(notes, iconsDiv);
 
-  // Change buttons and add event-listeners(or add them in interface, then select iconsDiv there not here)
+  // Change buttons
   const expandIcon = iconsDiv.querySelector('.expand');
-
-  const shrinkIcon = document.createElement('button');
-  shrinkIcon.classList.add('icon-button', 'shrink');
 
   const editIcon = document.createElement('button');
   editIcon.classList.add('icon-button', 'edit');
 
+  const shrinkIcon = document.createElement('button');
+  shrinkIcon.classList.add('icon-button', 'shrink');
+
   iconsDiv.insertBefore(editIcon, expandIcon);
   iconsDiv.insertBefore(shrinkIcon, expandIcon);
   iconsDiv.removeChild(expandIcon);
+}
+
+
+function shrinkTodo(todoDiv) {
+  todoDiv.querySelectorAll(
+    '.todo-priority, .todo-desc, .todo-notes'
+  ).forEach(node => {
+    todoDiv.removeChild(node);
+  });
+
+  const iconsDiv = todoDiv.querySelector('.todo-icons');
+  iconsDiv.querySelectorAll('.edit, .shrink').forEach(node => {
+    iconsDiv.removeChild(node);
+  });
+
+  const expandIcon = document.createElement('button');
+  expandIcon.classList.add('icon-button', 'expand');
+  const deleteIcon = todoDiv.querySelector('.delete');
+
+  iconsDiv.insertBefore(expandIcon, deleteIcon);
 }
 
 
@@ -162,6 +181,7 @@ const DOM = {
   showProjects,
   showTodos,
   expandTodo,
+  shrinkTodo,
 };
 
 export default DOM;
