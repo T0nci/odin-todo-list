@@ -119,10 +119,49 @@ function showTodos(todos) {
 }
 
 
+function expandTodo(todoIndex, todoInfo) {
+  // Expand the todo
+  const iconsDiv = document.querySelector(`[data-todo-index='${todoIndex}']`);
+  const todoDiv = iconsDiv.parentNode;
+
+  const priority = document.createElement('div');
+  priority.classList.add('todo-priority');
+  priority.textContent = `Priority: ${todoInfo.priority}`;
+
+  const desc = document.createElement('div');
+  desc.classList.add('todo-desc');
+  desc.innerHTML = `Description:<br>${todoInfo.description}`;
+
+  const notes = document.createElement('div');
+  notes.classList.add('todo-notes');
+  notes.innerHTML = `Notes:<br>${todoInfo.notes}`;
+
+  const checklist = document.createElement('div'); // need to change the checklist into an object probably to track which item is completed
+
+  todoDiv.insertBefore(priority, iconsDiv);
+  todoDiv.insertBefore(desc, iconsDiv);
+  todoDiv.insertBefore(notes, iconsDiv);
+
+  // Change buttons and add event-listeners(or add them in interface, then select iconsDiv there not here)
+  const expandIcon = iconsDiv.querySelector('.expand');
+
+  const shrinkIcon = document.createElement('button');
+  shrinkIcon.classList.add('icon-button', 'shrink');
+
+  const editIcon = document.createElement('button');
+  editIcon.classList.add('icon-button', 'edit');
+
+  iconsDiv.insertBefore(editIcon, expandIcon);
+  iconsDiv.insertBefore(shrinkIcon, expandIcon);
+  iconsDiv.removeChild(expandIcon);
+}
+
+
 const DOM = {
   enableModals,
   showProjects,
   showTodos,
+  expandTodo,
 };
 
 export default DOM;

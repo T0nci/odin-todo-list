@@ -249,6 +249,7 @@ dialog.create button[type='submit']:active {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 	gap: 1rem;
+	align-items: start;
 }
 
 .todo {
@@ -293,4 +294,12 @@ dialog.create button[type='submit']:active {
 	align-items: center;
 	gap: 0.2rem;
 	justify-content: flex-start;
+}
+
+.shrink {
+	background: url('../img/shrink.svg') center/25px auto no-repeat;
+}
+
+.edit {
+	background: url('../img/edit.svg') center/25px auto no-repeat;
 }

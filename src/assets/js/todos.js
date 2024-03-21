@@ -54,12 +54,18 @@ function changeCompletionStatus(index) {
 }
 
 
+function getTodo(index) {
+  return structuredClone(todos[index]);
+}
+
+
 const todoModule = {
   getAllTodos,
   getTodosFromProject,
   createTodo,
   deleteTodo,
   changeCompletionStatus,
+  getTodo,
 };
 
 const todos = [];

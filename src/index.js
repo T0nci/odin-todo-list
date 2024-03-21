@@ -149,6 +149,15 @@ function renderTodos(project) {
       renderTodos(project);
     });
   });
+
+  document.querySelectorAll('.expand').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const todoIndex = event.currentTarget.parentNode.dataset.todoIndex;
+      const todoInfo = todoModule.getTodo(todoIndex);
+
+      DOM.expandTodo(todoIndex, todoInfo);
+    });
+  });
 }
 
 
