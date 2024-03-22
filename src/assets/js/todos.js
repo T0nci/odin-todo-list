@@ -27,7 +27,6 @@ function getTodosFromProject(project) {
       todosFromProject.push(newTodo);
     }
   });
-  console.log(todosFromProject);
   return todosFromProject;
 };
 

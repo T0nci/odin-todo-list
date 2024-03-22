@@ -27,6 +27,7 @@ function enableModals() {
   });
   closeEditDialog.addEventListener('click', () => {
     editDialog.querySelector('form').reset();
+    document.querySelector('#todo-index').value = '';
     editDialog.close();
   });
 }
@@ -98,6 +99,7 @@ function showTodos(todos) {
 
     const completeButton = document.createElement('input');
     completeButton.setAttribute('type', 'checkbox');
+    completeButton.setAttribute('name', 'placeholder');
     completeButton.classList.add('checkbox');
     if (todo.complete) completeButton.checked = true;
 

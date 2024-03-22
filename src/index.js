@@ -101,6 +101,7 @@ function listenForDialogSubmit() {
     const todoNotes = document.querySelector('#edit-todo-notes').value; 
   
     document.querySelector('#edit-todo > form').reset();
+    document.querySelector('#todo-index').value = '';
     document.querySelector('#edit-todo').close();
 
     todoModule.editTodo(
@@ -119,8 +120,6 @@ function listenForDialogSubmit() {
 
 // Interface for showing all projects and listening for clicks
 function renderProjects() {
-  console.table(projectModule.getProjects());
-  console.table(todoModule.getAllTodos());
   const projects = projectModule.getProjects();
   DOM.showProjects(projects);
 
@@ -159,8 +158,6 @@ function renderProjects() {
 
 // Interface for showing all todos and listening for clicks
 function renderTodos(project) {  
-  console.table(projectModule.getProjects());
-  console.table(todoModule.getAllTodos());
   if (!projectModule.getProjects()) {
     DOM.showTodos('ERROR - NO TODOS');
     return;
