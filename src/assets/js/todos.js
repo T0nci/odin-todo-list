@@ -58,6 +58,16 @@ function getTodo(index) {
 }
 
 
+function editTodo(todoIndex, title, desc, date, priority, notes) {
+  const todo = todos[todoIndex];
+  todo.title = title;
+  todo.description = desc;
+  todo.dueDate = date;
+  todo.priority = priority;
+  todo.notes = notes;
+}
+
+
 const todoModule = {
   getAllTodos,
   getTodosFromProject,
@@ -65,6 +75,7 @@ const todoModule = {
   deleteTodo,
   changeCompletionStatus,
   getTodo,
+  editTodo,
 };
 
 const todos = [];

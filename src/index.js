@@ -71,6 +71,49 @@ function listenForDialogSubmit() {
   
     renderTodos(project);
   });
+
+  // Listen for todo edit
+  const submitEditDialog = document.querySelector(
+    '#edit-todo button[type="submit"]'
+  );
+  
+  submitEditDialog.addEventListener('click', event => {
+    event.preventDefault();
+
+    const project = document.querySelector('.active').textContent;
+    if (!project) {
+      document.querySelector('#edit-todo').close();
+      DOM.showTodos('You need to select a project!');
+      return;
+    }
+
+    const todoIndex = parseInt(document.querySelector('#todo-index').value);
+    if (isNaN(todoIndex)) {
+      document.querySelector('#edit-todo').close();
+      alert('ERROR');
+      return;
+    }
+
+    const todoTitle = document.querySelector('#edit-todo-title').value;
+    const todoDesc = document.querySelector('#edit-todo-desc').value;
+    const todoDate = document.querySelector('#edit-todo-date').value;
+    const todoPriority = document.querySelector('#edit-todo-priority').value;
+    const todoNotes = document.querySelector('#edit-todo-notes').value; 
+  
+    document.querySelector('#edit-todo > form').reset();
+    document.querySelector('#edit-todo').close();
+
+    todoModule.editTodo(
+      todoIndex,
+      todoTitle,
+      todoDesc,
+      todoDate,
+      todoPriority,
+      todoNotes,
+    );
+  
+    renderTodos(project);
+  });
 }
 
 
@@ -125,7 +168,6 @@ function renderTodos(project) {
 
   DOM.showTodos(todoModule.getTodosFromProject(project));
 
-  // document.querySelectorAll('todo').forEach(); // expand and delete, complete
   document.querySelectorAll('.checkbox').forEach(btn => {
     btn.addEventListener('click', event => {
       const todoIndex = parseInt(
@@ -149,7 +191,7 @@ function renderTodos(project) {
   });
 
 
-  const enableExpansion = function(event) {
+  const expandTodo = function(event) {
     const iconsDiv = event.currentTarget.parentNode;
 
     const todoIndex = iconsDiv.dataset.todoIndex;
@@ -162,13 +204,22 @@ function renderTodos(project) {
 
       DOM.shrinkTodo(todo);
 
-      todo.querySelector('.expand').addEventListener('click', enableExpansion);
+      todo.querySelector('.expand').addEventListener('click', expandTodo);
+    });
+
+    iconsDiv.querySelector('.edit').addEventListener('click', event => {
+      const todoIndex = parseInt(
+        event.currentTarget.parentNode.dataset.todoIndex
+      );
+      const todo = todoModule.getTodo(todoIndex);
+
+      DOM.showEditModal(todoIndex, todo);
     });
   }
 
 
   document.querySelectorAll('.expand').forEach(btn => {
-    btn.addEventListener('click', enableExpansion);
+    btn.addEventListener('click', expandTodo);
   });
 }
 

@@ -1,6 +1,7 @@
 function enableModals() {
   const projectDialog = document.querySelector('#add-project');
   const todoDialog = document.querySelector('#add-todo');
+  const editDialog = document.querySelector('#edit-todo');
 
   // Enable showing modals
   const showProjectDialog = document.querySelector('#show-add-project');
@@ -16,12 +17,17 @@ function enableModals() {
   // Enable closing modals
   const closeProjectDialog = document.querySelector('#close-add-project');
   const closeTodoDialog = document.querySelector('#close-add-todo');
+  const closeEditDialog = document.querySelector('#close-edit-todo');
 
   closeProjectDialog.addEventListener('click', () => {
     projectDialog.close();
   });
   closeTodoDialog.addEventListener('click', () => {
     todoDialog.close();
+  });
+  closeEditDialog.addEventListener('click', () => {
+    editDialog.querySelector('form').reset();
+    editDialog.close();
   });
 }
 
@@ -94,6 +100,7 @@ function showTodos(todos) {
     completeButton.setAttribute('type', 'checkbox');
     completeButton.classList.add('checkbox');
     if (todo.complete) completeButton.checked = true;
+
     const completeDiv = document.createElement('div');
     completeDiv.classList.add('complete');
     completeDiv.textContent = 'Complete:';
@@ -174,12 +181,36 @@ function shrinkTodo(todoDiv) {
 }
 
 
+function showEditModal(todoIndex, todo) {
+  const hiddenInfo = document.querySelector('#todo-index');
+  hiddenInfo.value = todoIndex;
+
+  const todoTitle = document.querySelector('#edit-todo-title');
+  todoTitle.value = todo.title;
+
+  const todoDesc = document.querySelector('#edit-todo-desc');
+  todoDesc.value = todo.description;
+
+  const todoDate = document.querySelector('#edit-todo-date');
+  todoDate.value = todo.dueDate;
+
+  const todoPriority = document.querySelector('#edit-todo-priority');
+  todoPriority.value = todo.priority;
+
+  const todoNotes = document.querySelector('#edit-todo-notes');
+  todoNotes.value = todo.notes;
+
+  document.querySelector('#edit-todo').showModal();
+}
+
+
 const DOM = {
   enableModals,
   showProjects,
   showTodos,
   expandTodo,
   shrinkTodo,
+  showEditModal,
 };
 
 export default DOM;

@@ -50,7 +50,7 @@
               <input type="text" name="get-todo-title" id="get-todo-title" autocomplete="off">
             </div>
             <div>
-              <label for="get-todo-desc">Description</label>
+              <label for="get-todo-desc">Description:</label>
               <textarea name="get-todo-desc" id="get-todo-desc"></textarea>
             </div>
             <div>
@@ -74,38 +74,40 @@
             </div>
           </form>
         </dialog>
-        <dialog id="add-todo">
+
+        <dialog id="edit-todo">
           <form action="">
             <div class="utility">
-              Add Todo
-              <button type="button" class="icon-button" id="close-add-todo"></button>
+              Edit Todo
+              <button type="button" class="icon-button" id="close-edit-todo"></button>
+            </div>
+            <input type="hidden" name="todo-index" id="todo-index">
+            <div>
+              <label for="edit-todo-title">Title:</label>
+              <input type="text" name="edit-todo-title" id="edit-todo-title" autocomplete="off">
             </div>
             <div>
-              <label for="get-todo-title">Title:</label>
-              <input type="text" name="get-todo-title" id="get-todo-title" autocomplete="off">
+              <label for="edit-todo-desc">Description:</label>
+              <textarea name="edit-todo-desc" id="edit-todo-desc"></textarea>
             </div>
             <div>
-              <label for="get-todo-desc">Description</label>
-              <textarea name="get-todo-desc" id="get-todo-desc"></textarea>
+              <label for="edit-todo-date">Due Date:</label>
+              <input type="date" name="edit-todo-date" id="edit-todo-date">
             </div>
             <div>
-              <label for="get-todo-date">Due Date:</label>
-              <input type="date" name="get-todo-date" id="get-todo-date">
-            </div>
-            <div>
-              <label for="get-todo-priority">Priority:</label>
-              <select name="get-todo-priority" id="get-todo-priority">
+              <label for="edit-todo-priority">Priority:</label>
+              <select name="edit-todo-priority" id="edit-todo-priority">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
             </div>
             <div>
-              <label for="get-todo-notes">Notes:</label>
-              <textarea name="get-todo-notes" id="get-todo-notes"></textarea>
+              <label for="edit-todo-notes">Notes:</label>
+              <textarea name="edit-todo-notes" id="edit-todo-notes"></textarea>
             </div>
             <div>
-              <button type="submit">Create</button>
+              <button type="submit">Edit</button>
             </div>
           </form>
         </dialog>
