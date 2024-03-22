@@ -22,7 +22,7 @@ function getTodosFromProject(project) {
   const todosFromProject = []
   todos.forEach((todo, todoIndex) => {
     if (todo.project === project) {
-      const newTodo = structuredClone(todo);
+      const newTodo = JSON.parse(JSON.stringify(todo));
       newTodo.todoIndex = todoIndex;
       todosFromProject.push(newTodo);
     }
