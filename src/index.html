@@ -14,7 +14,7 @@
         <div class="projects">
 
         </div>
-        <dialog class="create" id="add-project">
+        <dialog id="add-project">
           <form action="">
             <div class="utility">
               Add Project
@@ -39,7 +39,42 @@
         <div class="todos">
 
         </div>
-        <dialog class="create" id="add-todo">
+        <dialog id="add-todo">
+          <form action="">
+            <div class="utility">
+              Add Todo
+              <button type="button" class="icon-button" id="close-add-todo"></button>
+            </div>
+            <div>
+              <label for="get-todo-title">Title:</label>
+              <input type="text" name="get-todo-title" id="get-todo-title" autocomplete="off">
+            </div>
+            <div>
+              <label for="get-todo-desc">Description</label>
+              <textarea name="get-todo-desc" id="get-todo-desc"></textarea>
+            </div>
+            <div>
+              <label for="get-todo-date">Due Date:</label>
+              <input type="date" name="get-todo-date" id="get-todo-date">
+            </div>
+            <div>
+              <label for="get-todo-priority">Priority:</label>
+              <select name="get-todo-priority" id="get-todo-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div>
+              <label for="get-todo-notes">Notes:</label>
+              <textarea name="get-todo-notes" id="get-todo-notes"></textarea>
+            </div>
+            <div>
+              <button type="submit">Create</button>
+            </div>
+          </form>
+        </dialog>
+        <dialog id="add-todo">
           <form action="">
             <div class="utility">
               Add Todo
